@@ -34,6 +34,13 @@ class ClassLifeCycle extends React.Component {
   // 元件從網頁上消失(移除)前才會觸發
   componentWillUnmount() {
     console.log('componentWillUnmount')
+
+    // 與componentDidMount會有成對使用的情況
+    document
+      .getElementById('clickme')
+      .removeEventListener('click', function () {
+        alert('你好')
+      })
   }
 
   // 掛載(mounting) + 更新(updating)
