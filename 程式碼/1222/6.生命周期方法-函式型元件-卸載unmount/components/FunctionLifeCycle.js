@@ -28,6 +28,14 @@ function FunctionLifeCycle(props) {
     }
   }, [total])
 
+  // 模擬componentWillUnmount
+  useEffect(() => {
+    return () => {
+      // 模擬componentWillUnmount
+      console.log('模擬 componentWillUnmount')
+    }
+  }, [])
+
   return (
     <>
       {console.log('render')} Function: LifeCycle
