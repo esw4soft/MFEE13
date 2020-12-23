@@ -1,5 +1,7 @@
 # React Bootstrap使用說明
 
+> https://react-bootstrap.github.io/
+
 本範例中使用了數個套件模組，這些套件彼此可獨立運作。它們分別的功用如下所示:
 
 - React Bootstrap: 應用程式的排版，跳出視窗、表單、按鈕等操作介面
@@ -16,16 +18,18 @@
 在終端機裡，對應專案的根目錄，輸入以下的指令(選擇其中一種即可，如果已經有安裝 yarn 建議使用上面這個):
 
 ```
-yarn add react-bootstrap bootstrap
+yarn add react-bootstrap
 ```
 
 或
 
 ```
-npm install react-bootstrap bootstrap
+npm install react-bootstrap
 ```
 
 ### 修改 index.html
+
+> 如果沒有使用bootstrap模組與scss的話，才需要此步驟
 
 因為 React Bootstrap 雖然並沒有依賴任一個 Bootstrap 的版本中的css，但有些樣式仍然是需要使用 Bootstrap 中的css檔案，所以你還是得要加入到你的 index.html檔案之中。
 
@@ -98,7 +102,7 @@ npm install react-icons --save
 
 ### 使用圖示範例
 
-react-icons支援了6種免費(商業授權也免費)的圖示，使用上非常簡單。
+react-icons支援了10種以上免費(商業授權也免費)的圖示，使用上非常簡單。
 
 首先在已安裝好的專案程式碼檔案上引入，然後在JSX語法中作為元件來使用即可，如下面的程式碼範例：
 

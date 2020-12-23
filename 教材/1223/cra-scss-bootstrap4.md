@@ -43,8 +43,10 @@ npm install --save bootstrap
 > 在`src`目錄
 
 ```scss
+// 其它自訂樣式
 @import './styles/custom.scss';
 
+// 全站都會使用的共同樣式
 html {
  font-size: 12px;
 }
@@ -64,7 +66,7 @@ body {
 全部導入的情況：
 
 ```scss
-// Import Bootstrap and its default variables
+// 導入bootstrap所有的樣式與預設變數
 @import '~bootstrap/scss/bootstrap.scss';
 
 // 其它要導入覆蓋掉原本的預設bootstrap樣式要放在這下面
@@ -112,7 +114,7 @@ body {
 // components takes precedence over default bootstrap styles
 ```
 
-### 覆蓋預設變數 variables.scss
+### 覆蓋預設變數 _variables.scss
 
 在Bootstrap 4中只要是有包含`!default`標記的Sass變數是可以覆蓋的，並不需要更改到Bootstrap的原始檔案。
 
@@ -123,15 +125,18 @@ body {
 > 在`src/styles`目錄
 
 ```scss
-// Your custom theme/variable overrides go here
+// 變數覆蓋需要在導入Bootstrap的Sass檔案之前
+// 參考Bootstrap的 _variables.scss
+$primary: rgb(148, 36, 240);
+$secondary: rgba(10, 10, 10, 0.842);
 
-// Body
-$body-bg: #fff;
-$body-color: #ccc;
-$app-min-width: 1024px;
+// 導入Bootstrap所有的樣式與預設變數
+@import '~bootstrap/scss/bootstrap.scss';
 
-// Required parts of Bootstrap
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
+// 其它要導入覆蓋掉原本的預設Bootstrap樣式要放在這下面
+// .alert-primary {
+//   color: #020c16;
+//   background-color: #5e94ce;
+//   border-color: #b8daff;
+// }
 ```
