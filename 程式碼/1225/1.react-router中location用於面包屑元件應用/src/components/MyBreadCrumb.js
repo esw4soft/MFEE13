@@ -8,6 +8,8 @@ import { withRouter, Link } from 'react-router-dom'
 function MyBreadCrumb(props) {
   const { location } = props
 
+  // 轉換pathname路徑為文字
+  // 回傳陣列(如果有像 `產品/嬰兒`)
   const convertPathname2Text = (pathname) => {
     const index = pathnameList.findIndex(
       (v, i) => v === pathname
@@ -17,6 +19,7 @@ function MyBreadCrumb(props) {
       : ''
   }
 
+  // 有一個項目和二個項目的情況
   const formatText = (textArray) => {
     return textArray.length > 1 ? (
       <>
