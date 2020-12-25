@@ -65,18 +65,26 @@ Route元件是使用來建立路由的對照表，這個元件的可設置屬性
 
 Switch元件通常會包裹Route元件，因為路由表的使用方式是用對照符合(match)的，Switch會從上到下尋找最近的一個，也只會使用一個。以下面的兩個例子來說明有使用Switch元件和沒使用Switch元件的差異：
 
-```
+```jsx
 <Switch>
-    <Route path="/about" component={About} />
-    <Route path="/about/contact" component={Contact} />
+    <Route path="/about">
+        <About />
+    </Route>
+    <Route path="/about/contact">
+        <Contact />
+    </Route>
 </Switch>
 ```
 
 上面這個例子，如果網址是`/about`則出現About元件的內容，但如果網址是`/about/contact`則出現Contact元件的內容。
 
-```
-<Route path="/about" component={About} />
-<Route path="/about/contact" component={Contact} />
+```jsx
+<Route path="/about">
+    <About />
+</Route>
+<Route path="/about/contact">
+    <Contact />
+</Route>
 ```
 
 上面這個例子，如果，如果網址是`/about`則出現About元件的內容，但如果網址是`/about/contact`，則會出現About與Contact元件兩者的內容。
@@ -87,7 +95,9 @@ Switch元件通常會包裹Route元件，因為路由表的使用方式是用對
 
 ### 以Link取代a
 
-a元素是網站應用中的連結網頁用元素，Link元件是React Router中用來取代a的元件。
+> 注意：使用`a`與`href`有可能會導致頁面刷新，元件會重新回恢初始狀態，導致應用程式的運作失常，所以請儘可能用Link元件
+
+`a`元素與`href`屬性是網站應用中的連結網頁用元素，Link元件是React Router中用來取代a的元件。
 
 原本的連結應該是像下面這樣：
 
@@ -133,28 +143,20 @@ Link元件中除了可以像a元素中，使用id、title、className等屬性�
 範例:
 
 ```js
-import React from "react";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router";
+import React, { useState, useEffect } from 'react'
+import { Link, Switch, withRouter } from 'react-router-dom'
 
-// A simple component that shows the pathname of the current location
-class ShowTheLocation extends React.Component {
-  static propTypes = {
-    match: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired
-  };
-
-  render() {
-    const { match, location, history } = this.props;
-
-    return <div>You are now at {location.pathname}</div>;
-  }
+function Product(props) {
+  console.log(props)
+  return (
+    <>
+      <h1>Product</h1>
+      <h3>{props.match.params.id}</h3>
+    </>
+  )
 }
 
-// Create a new component that is "connected" (to borrow redux
-// terminology) to the router.
-const ShowTheLocationWithRouter = withRouter(ShowTheLocation);
+export default withRouter(Product)
 ```
 
 ### Hooks(勾子)
