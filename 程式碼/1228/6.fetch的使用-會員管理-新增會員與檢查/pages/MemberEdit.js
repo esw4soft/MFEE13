@@ -199,9 +199,11 @@ function MemberEdit(props) {
         className="btn btn-primary"
         onClick={() => {
           // 作檢查
+          // 切換已進入檢查的狀態
           setInChecked(true)
 
           const newInvalidFields = []
+
           if (!name) {
             newInvalidFields.push('name')
           }
@@ -210,9 +212,11 @@ function MemberEdit(props) {
             newInvalidFields.push('email')
           }
 
+          //設定檢查的樣式
+          setInvalidFields(newInvalidFields)
+
+          // 如果有錯誤則不送出
           if (newInvalidFields.length > 0) {
-            setInvalidFields(newInvalidFields)
-            console.log(newInvalidFields)
             return
           }
 
