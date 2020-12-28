@@ -8,6 +8,7 @@ function Member(props) {
     //開始載入資料，先出現spinner
     setIsLoading(true)
 
+    // 要使用try-catch來作錯誤處理
     try {
       // 從伺服器得到資料
       const response = await fetch(
@@ -16,9 +17,12 @@ function Member(props) {
           method: 'get',
         }
       )
+
       // ok只能判斷201-299狀態碼的情況
       if (response.ok) {
+        // 剖析資料為JS的數值
         const data = await response.json()
+
         // 設定資料到member狀態
         setMembers(data)
       }
@@ -28,6 +32,7 @@ function Member(props) {
         setIsLoading(false)
       }, 3000)
     } catch (error) {
+      // 發生錯誤的處理情況
       alert('無法得到伺服器資料，請稍後再重試')
       console.log(error)
     }
